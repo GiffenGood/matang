@@ -5,12 +5,21 @@ var ContactManagerApp;
             var _this = this;
             this.userService = userService;
             this.$mdSidenav = $mdSidenav;
-            userService.loadAllUsers().then(function (d) {
-                _this.users = d;
+            this.selectedUser = null;
+            userService.loadAllUsers().then(function (users) {
+                _this.users = users;
+                _this.selectedUser = users[0];
             });
         }
         MainController.prototype.toggleSideNav = function () {
             this.$mdSidenav('left').toggle();
+        };
+        MainController.prototype.selectUser = function (user) {
+            this.selectedUser = user;
+            var sideNav = this.$mdSidenav('left');
+            if (sideNav.isOpen) {
+                sideNav.close();
+            }
         };
         return MainController;
     })();

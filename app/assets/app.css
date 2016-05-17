@@ -17,9 +17,24 @@ md-toolbar .md-toolbar-tools h1{
     font-weight: 400;
 }
 
+md-list .md-button{
+    color : inherit;
+    font-weight: 600;
+    text-align: left;
+    width : 100%;
+}
+
+md-list .md-button.selected{
+    color : #03a9f4;
+}
+
+md-sidenav md-list {
+    padding: 0px 0px 8px 0px;
+}
 
 #content{
    padding-left: 40px;
    padding-right: 40px;
    padding-top: 5px;
 }
+

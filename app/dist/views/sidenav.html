@@ -7,9 +7,14 @@
     <md-content>
         <md-list>
             <md-list-item ng-repeat="user in vm.users | orderBy:'name'">
-               <md-button ng-click="vm.selectUser(user)">
+               <md-button ng-click="vm.selectUser(user)"
+                                   ng-class="{'selected' : user=== vm.selectedUser}">
                     <md-icon md-svg-icon="{{user.avatar}}" class="avatar" ></md-icon>
-                    {{user.name}}
+                        
+                            
+                            {{user.name}}
+                            {{user.avatar}}
+                        
                </md-button>
             </md-list-item>
         </md-list>            
