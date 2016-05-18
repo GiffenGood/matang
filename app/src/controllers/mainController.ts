@@ -68,6 +68,7 @@ module ContactManagerApp {
                     targetEvent : $event,
                     controller : AddUserDialogController,
                     controllerAs : "ctrl",
+                    clickOutsideToClose : true,
                     fullscreen : true
                 })
                 .then((user: User) => {

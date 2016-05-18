@@ -62,6 +62,7 @@ var ContactManagerApp;
                 targetEvent: $event,
                 controller: ContactManagerApp.AddUserDialogController,
                 controllerAs: "ctrl",
+                clickOutsideToClose: true,
                 fullscreen: true
             })
                 .then(function (user) {
