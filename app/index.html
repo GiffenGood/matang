@@ -24,6 +24,7 @@
 
     <script src="./dist/services/userService.js"></script>
     <script src="./dist/controllers/addUserDialogController.js"></script>
+    <script src="./dist/controllers/contactPanelController.js"></script>
     <script src="./dist/controllers/mainController.js"></script>
     <script src="./dist/boot.js"></script>
 </head>
@@ -33,7 +34,7 @@
     <div ng-include="'dist/views/sidenav.html'" layout="vertical">
     </div>
   
-    <div layout="column" flex> 
+    <div layout="column" flex id="wrapper"> 
         <div ng-include="'dist/views/toolbar-header.html'">
         </div>             
 

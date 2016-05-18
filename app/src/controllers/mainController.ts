@@ -9,19 +9,25 @@ module ContactManagerApp {
             private $mdSidenav: angular.material.ISidenavService,
             private $mdToast: angular.material.IToastService,
             private $mdDialog: angular.material.IDialogService,
-            private $mdMedia: angular.material.IMedia) {
+            private $mdMedia: angular.material.IMedia,
+            private $mdBottomSheet : angular.material.IBottomSheetService) {
             userService.loadAllUsers().then(users => {
                 this.users = users;
-                this.selectedUser = users[0];
+                this.setUser(users[0]);
             })
         }
 
         public toggleSideNav(): void {
             this.$mdSidenav('left').toggle();
         }
+        
+        private setUser(user : User){
+            this.selectedUser = user;
+            this.userService.selectedUser = user;            
+        }
 
         public selectUser(user: User): void {
-            this.selectedUser = user;
+            this.setUser(user);
             var sideNav = this.$mdSidenav('left');
             if (sideNav.isOpen) {
                 sideNav.close();
@@ -77,6 +83,20 @@ module ContactManagerApp {
                     this.openToast("Cancelled");
                 });
         }
+        
+        public showContactOptions($event){
+            this.$mdBottomSheet.show({
+                parent : angular.element(document.getElementById('wrapper')),
+                templateUrl : './dist/views/contactSheet.html',
+                controller : ContactPanelController,
+                controllerAs : "cp",
+                bindToController : true,
+                targetEvent : $event                
+            }).then((clickedItem)=>{
+                clickedItem && console.log(clickedItem);
+            })
+        }
+        
     }
 }
 

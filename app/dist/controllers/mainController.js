@@ -1,26 +1,31 @@
 var ContactManagerApp;
 (function (ContactManagerApp) {
     var MainController = (function () {
-        function MainController(userService, $mdSidenav, $mdToast, $mdDialog, $mdMedia) {
+        function MainController(userService, $mdSidenav, $mdToast, $mdDialog, $mdMedia, $mdBottomSheet) {
             var _this = this;
             this.userService = userService;
             this.$mdSidenav = $mdSidenav;
             this.$mdToast = $mdToast;
             this.$mdDialog = $mdDialog;
             this.$mdMedia = $mdMedia;
+            this.$mdBottomSheet = $mdBottomSheet;
             this.searchText = "";
             this.selectedUser = null;
             this.tabIndex = 0;
             userService.loadAllUsers().then(function (users) {
                 _this.users = users;
-                _this.selectedUser = users[0];
+                _this.setUser(users[0]);
             });
         }
         MainController.prototype.toggleSideNav = function () {
             this.$mdSidenav('left').toggle();
         };
-        MainController.prototype.selectUser = function (user) {
+        MainController.prototype.setUser = function (user) {
             this.selectedUser = user;
+            this.userService.selectedUser = user;
+        };
+        MainController.prototype.selectUser = function (user) {
+            this.setUser(user);
             var sideNav = this.$mdSidenav('left');
             if (sideNav.isOpen) {
                 sideNav.close();
@@ -69,6 +74,18 @@ var ContactManagerApp;
                 _this.openToast("User Added");
             }, function () {
                 _this.openToast("Cancelled");
+            });
+        };
+        MainController.prototype.showContactOptions = function ($event) {
+            this.$mdBottomSheet.show({
+                parent: angular.element(document.getElementById('wrapper')),
+                templateUrl: './dist/views/contactSheet.html',
+                controller: ContactManagerApp.ContactPanelController,
+                controllerAs: "cp",
+                bindToController: true,
+                targetEvent: $event
+            }).then(function (clickedItem) {
+                clickedItem && console.log(clickedItem);
             });
         };
         return MainController;

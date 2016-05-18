@@ -12,6 +12,10 @@ var ContactManagerApp;
         $mdIconProvider.icon('svg-3', './assets/svg/woman.svg', 128);
         $mdIconProvider.icon('svg-4', './assets/svg/woman-1.svg', 128);
         $mdIconProvider.icon('menu', './assets/svg/menu.svg', 24);
+        $mdIconProvider.icon('google+', './assets/svg/google-plus.svg', 512);
+        $mdIconProvider.icon('facebook', './assets/svg/facebook.svg', 512);
+        $mdIconProvider.icon('twitter', './assets/svg/twitter.svg', 512);
+        $mdIconProvider.icon('pinterest', './assets/svg/pinterest.svg', 512);
         $mdThemingProvider.theme('default')
             .primaryPalette('blue')
             .accentPalette('red');

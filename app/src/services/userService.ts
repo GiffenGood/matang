@@ -1,5 +1,7 @@
 module ContactManagerApp {
     export class UserService {
+        public selectedUser : User;
+        
         users = [
             {
                 name: "Dave Dawson",
