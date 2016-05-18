@@ -2,6 +2,7 @@
 module ContactManagerApp{
     var app = angular.module('contactManagerApp',['ngMaterial','ngMdIcons']);
     app.controller('mainController',MainController);
+    app.controller('addUserDialogController',AddUserDialogController);
     app.service('userService',UserService);
     
     app.config(($mdIconProvider: angular.material.IIconProvider,

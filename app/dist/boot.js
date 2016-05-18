@@ -3,6 +3,7 @@ var ContactManagerApp;
 (function (ContactManagerApp) {
     var app = angular.module('contactManagerApp', ['ngMaterial', 'ngMdIcons']);
     app.controller('mainController', ContactManagerApp.MainController);
+    app.controller('addUserDialogController', ContactManagerApp.AddUserDialogController);
     app.service('userService', ContactManagerApp.UserService);
     app.config(function ($mdIconProvider, $mdThemingProvider) {
         //$mdIconProvider.defaultIconSet("./assets/svg/avatars.svg", 128);

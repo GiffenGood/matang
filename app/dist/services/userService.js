@@ -40,6 +40,16 @@ var ContactManagerApp;
         return UserService;
     })();
     ContactManagerApp.UserService = UserService;
+    var User = (function () {
+        function User(name, avatar, bio, notes) {
+            this.name = name;
+            this.avatar = avatar;
+            this.bio = bio;
+            this.notes = notes;
+        }
+        return User;
+    })();
+    ContactManagerApp.User = User;
     var Note = (function () {
         function Note(title, date) {
             this.title = title;
