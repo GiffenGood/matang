@@ -1,14 +1,14 @@
 var ContactManagerApp;
 (function (ContactManagerApp) {
     var AddUserDialogController = (function () {
-        function AddUserDialogController($mdDiallog) {
-            this.$mdDiallog = $mdDiallog;
+        function AddUserDialogController($mdDialog) {
+            this.$mdDialog = $mdDialog;
         }
         AddUserDialogController.prototype.cancel = function () {
-            this.$mdDiallog.cancel();
+            this.$mdDialog.cancel();
         };
         AddUserDialogController.prototype.save = function () {
-            this.$mdDiallog.hide(new ContactManagerApp.User("placeholder", "", "", []));
+            this.$mdDialog.hide(new ContactManagerApp.User("placeholder", "", "", []));
         };
         return AddUserDialogController;
     })();

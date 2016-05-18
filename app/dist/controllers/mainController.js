@@ -57,10 +57,12 @@ var ContactManagerApp;
             var _this = this;
             var userFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs'));
             this.$mdDialog.show({
-                templateUrl: './dist/view/newUserDialog.html',
+                templateUrl: './dist/views/newUserDialog.html',
                 parent: angular.element(document.body),
                 targetEvent: $event,
-                controller: ContactManagerApp.AddUserDialogController
+                controller: ContactManagerApp.AddUserDialogController,
+                controllerAs: "ctrl",
+                fullscreen: true
             })
                 .then(function (user) {
                 _this.openToast("User Added");

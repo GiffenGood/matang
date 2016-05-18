@@ -1,16 +1,16 @@
 module ContactManagerApp {
 
     export class AddUserDialogController {
-        constructor(private $mdDiallog: angular.material.IDialogService) {
+        constructor(private $mdDialog: angular.material.IDialogService) {
 
         }
 
         cancel() {
-            this.$mdDiallog.cancel();
+            this.$mdDialog.cancel();
         }
         
         save(){
-            this.$mdDiallog.hide(new User("placeholder","","",[]))
+            this.$mdDialog.hide(new User("placeholder","","",[]))
         }
     }
 }

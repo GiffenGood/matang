@@ -1,8 +1,8 @@
 module ContactManagerApp {
     export class MainController {
         public searchText: string = "";
-        public users: IUser[];
-        public selectedUser: IUser = null;
+        public users: User[];
+        public selectedUser: User = null;
         public tabIndex: number = 0;
 
         constructor(private userService: UserService,
@@ -20,7 +20,7 @@ module ContactManagerApp {
             this.$mdSidenav('left').toggle();
         }
 
-        public selectUser(user: IUser): void {
+        public selectUser(user: User): void {
             this.selectedUser = user;
             var sideNav = this.$mdSidenav('left');
             if (sideNav.isOpen) {
@@ -63,12 +63,14 @@ module ContactManagerApp {
         public addUser($event) {
             let userFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs'));
             this.$mdDialog.show({
-                    templateUrl: './dist/view/newUserDialog.html',
+                    templateUrl: './dist/views/newUserDialog.html',
                     parent : angular.element(document.body),
                     targetEvent : $event,
-                    controller : AddUserDialogController
+                    controller : AddUserDialogController,
+                    controllerAs : "ctrl",
+                    fullscreen : true
                 })
-                .then((user: IUser) => {
+                .then((user: User) => {
                     this.openToast("User Added");
                 }, () => {
                     this.openToast("Cancelled");
