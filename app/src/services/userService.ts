@@ -1,7 +1,7 @@
 module ContactManagerApp {
     export class UserService {
-        public selectedUser : User;
-        
+        public selectedUser: User;
+
         users = [
             {
                 name: "Dave Dawson",
@@ -49,6 +49,25 @@ module ContactManagerApp {
             public notes: Note[]
         ) {
 
+        }
+    }
+
+    export class CreateUser {
+        constructor(
+            public firstName: string,
+            public lastName: string,
+            public avatar: string,
+            public bio: string) {
+
+        }
+        
+        static fromCreate(user : CreateUser) : User {
+            return new User(
+                user.firstName + ' ' + user.lastName,
+                user.avatar,
+                user.bio,
+                []
+            )
         }
     }
 

@@ -50,6 +50,19 @@ var ContactManagerApp;
         return User;
     })();
     ContactManagerApp.User = User;
+    var CreateUser = (function () {
+        function CreateUser(firstName, lastName, avatar, bio) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.avatar = avatar;
+            this.bio = bio;
+        }
+        CreateUser.fromCreate = function (user) {
+            return new User(user.firstName + ' ' + user.lastName, user.avatar, user.bio, []);
+        };
+        return CreateUser;
+    })();
+    ContactManagerApp.CreateUser = CreateUser;
     var Note = (function () {
         function Note(title, date) {
             this.title = title;
