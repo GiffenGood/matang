@@ -9,7 +9,7 @@ var ContactManagerApp;
             this.$mdDialog.cancel();
         };
         AddUserDialogController.prototype.save = function () {
-            this.$mdDialog.hide(new ContactManagerApp.User("placeholder", "", "", []));
+            this.$mdDialog.hide(this.user);
         };
         return AddUserDialogController;
     })();

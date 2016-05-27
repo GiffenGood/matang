@@ -50,6 +50,15 @@ module ContactManagerApp {
         ) {
 
         }
+        
+        static fromCreate(user : CreateUser) : User {
+            return new User(
+                user.firstName + ' ' + user.lastName,
+                user.avatar,
+                user.bio,
+                []
+            )
+        }        
     }
 
     export class CreateUser {
@@ -59,15 +68,6 @@ module ContactManagerApp {
             public avatar: string,
             public bio: string) {
 
-        }
-        
-        static fromCreate(user : CreateUser) : User {
-            return new User(
-                user.firstName + ' ' + user.lastName,
-                user.avatar,
-                user.bio,
-                []
-            )
         }
     }
 

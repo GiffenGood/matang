@@ -4,6 +4,7 @@ module ContactManagerApp {
         public users: User[];
         public selectedUser: User = null;
         public tabIndex: number = 0;
+        public newNote : Note = new Note('', null);
 
         constructor(private userService: UserService,
             private $mdSidenav: angular.material.ISidenavService,
@@ -77,7 +78,10 @@ module ContactManagerApp {
                     clickOutsideToClose : true,
                     fullscreen : true
                 })
-                .then((user: User) => {
+                .then((createUser: CreateUser) => {
+                    let temp = User.fromCreate(createUser);
+                    this.users.push(temp);
+                    this.selectUser(temp);
                     this.openToast("User Added");
                 }, () => {
                     this.openToast("Cancelled");
@@ -95,6 +99,12 @@ module ContactManagerApp {
             }).then((clickedItem)=>{
                 clickedItem && console.log(clickedItem);
             })
+        }
+        
+        public addNote() : void {
+            this.selectedUser.notes.push(this.newNote);
+            this.newNote = new Note('',null);
+            this.openToast("Note added");
         }
         
     }

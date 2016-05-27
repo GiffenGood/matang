@@ -12,6 +12,7 @@ var ContactManagerApp;
             this.searchText = "";
             this.selectedUser = null;
             this.tabIndex = 0;
+            this.newNote = new ContactManagerApp.Note('', null);
             userService.loadAllUsers().then(function (users) {
                 _this.users = users;
                 _this.setUser(users[0]);
@@ -70,7 +71,10 @@ var ContactManagerApp;
                 clickOutsideToClose: true,
                 fullscreen: true
             })
-                .then(function (user) {
+                .then(function (createUser) {
+                var temp = ContactManagerApp.User.fromCreate(createUser);
+                _this.users.push(temp);
+                _this.selectUser(temp);
                 _this.openToast("User Added");
             }, function () {
                 _this.openToast("Cancelled");
@@ -87,6 +91,11 @@ var ContactManagerApp;
             }).then(function (clickedItem) {
                 clickedItem && console.log(clickedItem);
             });
+        };
+        MainController.prototype.addNote = function () {
+            this.selectedUser.notes.push(this.newNote);
+            this.newNote = new ContactManagerApp.Note('', null);
+            this.openToast("Note added");
         };
         return MainController;
     })();

@@ -2,7 +2,7 @@
     <form name="userForm" ng-submit="ctrl.save()">
         <md-dialog-content>
             <!--Why is this not laying out like the video -->
-            
+
             <div layout="column" layout-padding>
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-small>
@@ -21,15 +21,16 @@
                         <label>Last Name</label>
                         <input ng-model="ctrl.user.lastName" name="lastName">
                     </md-input-container>
-                    <md-input-container class="md-block" flex>
-                        <label>Biography</label>
-                        <textarea rows="5" ng-model="ctrl.user.bio" name="bio"></textarea>
-                    </md-input-container>                    
                 </div>
-            </div </md-dialog-content>
-            <md-dialog-actions layout="row">
-                <md-button ng-click="ctrl.cancel()">Cancel</md-button>
-                <md-button type="submit" class="md-primary md-raise">Save</md-button>
-            </md-dialog-actions>
+                <md-input-container class="md-block" flex>
+                    <label>Biography</label>
+                    <textarea rows="5" ng-model="ctrl.user.bio" name="bio"></textarea>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="ctrl.cancel()">Cancel</md-button>
+            <md-button type="submit" class="md-primary md-raise">Save</md-button>
+        </md-dialog-actions>
     </form>
 </md-dialog>

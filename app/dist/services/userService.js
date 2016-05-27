@@ -47,6 +47,9 @@ var ContactManagerApp;
             this.bio = bio;
             this.notes = notes;
         }
+        User.fromCreate = function (user) {
+            return new User(user.firstName + ' ' + user.lastName, user.avatar, user.bio, []);
+        };
         return User;
     })();
     ContactManagerApp.User = User;
@@ -57,9 +60,6 @@ var ContactManagerApp;
             this.avatar = avatar;
             this.bio = bio;
         }
-        CreateUser.fromCreate = function (user) {
-            return new User(user.firstName + ' ' + user.lastName, user.avatar, user.bio, []);
-        };
         return CreateUser;
     })();
     ContactManagerApp.CreateUser = CreateUser;

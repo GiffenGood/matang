@@ -12,7 +12,7 @@ module ContactManagerApp {
         }
         
         save(){
-            this.$mdDialog.hide(new User("placeholder","","",[]))
+            this.$mdDialog.hide(this.user)
         }
         
         public avatars = ["svg-1","svg-2","svg-3","svg-4"];
